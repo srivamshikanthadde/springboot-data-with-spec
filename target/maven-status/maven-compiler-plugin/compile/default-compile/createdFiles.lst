@@ -1,0 +1,17 @@
+com/bezkoder/spring/datajpa/repository/SearchCriteria.class
+com/bezkoder/spring/datajpa/repository/UserSpecification$1.class
+com/bezkoder/spring/datajpa/repository/UserRepository.class
+com/bezkoder/spring/datajpa/repository/GenericSpecificationsBuilder.class
+com/bezkoder/spring/datajpa/repository/UserSpecification.class
+com/bezkoder/spring/datajpa/repository/TutorialRepository.class
+com/bezkoder/spring/datajpa/repository/IUserDAO.class
+com/bezkoder/spring/datajpa/repository/SpecSearchCriteria.class
+com/bezkoder/spring/datajpa/controller/HomeController.class
+com/bezkoder/spring/datajpa/model/User.class
+com/bezkoder/spring/datajpa/controller/UserController.class
+com/bezkoder/spring/datajpa/repository/CriteriaParser$Operator.class
+com/bezkoder/spring/datajpa/repository/CriteriaParser.class
+com/bezkoder/spring/datajpa/repository/SearchOperation.class
+com/bezkoder/spring/datajpa/repository/UserSpecificationsBuilder.class
+com/bezkoder/spring/datajpa/model/Tutorial.class
+com/bezkoder/spring/datajpa/SpringBootDataJpaApplication.class

@@ -1,0 +1,15 @@
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/repository/SearchCriteria.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/repository/UserRepository.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/repository/UserSpecificationsBuilder.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/model/User.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/repository/IUserDAO.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/SpringBootDataJpaApplication.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/repository/GenericSpecificationsBuilder.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/repository/SearchOperation.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/controller/HomeController.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/repository/CriteriaParser.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/repository/SpecSearchCriteria.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/controller/UserController.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/model/Tutorial.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/repository/UserSpecification.java
+/Users/addesrivamshikanth/Downloads/spring-boot-data-jpa-mysql-master/src/main/java/com/bezkoder/spring/datajpa/repository/TutorialRepository.java
