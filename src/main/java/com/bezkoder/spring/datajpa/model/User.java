@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 public class User {
@@ -12,6 +15,17 @@ public class User {
     private Long id;
  
     private String firstName;
+
+    private String lastName;
+
+    private String email;
+
+    private int age;
+
+    private Timestamp createdDate;
+
+    private Timestamp updatedDate;
+
 
     public Long getId() {
         return id;
@@ -53,9 +67,19 @@ public class User {
         this.age = age;
     }
 
-    private String lastName;
-    private String email;
- 
-    private int age;
-    
+    public Timestamp getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Timestamp createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Timestamp getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Timestamp updatedDate) {
+        this.updatedDate = updatedDate;
+    }
 }

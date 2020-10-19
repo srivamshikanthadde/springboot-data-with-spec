@@ -39,7 +39,12 @@ public class UserController {
     public List<User> search(@RequestParam(value = "search", required = false) String search) {
         List<SearchCriteria> params = new ArrayList<SearchCriteria>();
         if (search != null) {
-            Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
+            //Pattern pattern = Pattern.compile("(\\p{Punct}?)(\\w+?)(:|<|>)(\\p{Punct}?)(\\w+?)(\\p{Punct}?),");
+
+           Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)([\\w/-]+),");
+           // if(search.contains("createdDate")){
+                //Pattern  pattern = Pattern.compile("(\\w+?)(:|<|>)([A-Za-z0-9_-]),");
+           // }
             Matcher matcher = pattern.matcher(search + ",");
             while (matcher.find()) {
                 params.add(new SearchCriteria(matcher.group(1), matcher.group(2), matcher.group(3)));
@@ -47,6 +52,8 @@ public class UserController {
         }
         return service.searchUser(params);
     }
+
+
 
     @RequestMapping(method = RequestMethod.GET, value = "/users/spec")
     @ResponseBody
