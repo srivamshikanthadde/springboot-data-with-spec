@@ -10,8 +10,7 @@ public class CriteriaParser {
 
     private static Map<String, Operator> ops;
 
-    private static Pattern SpecCriteraRegex = Pattern.compile("^(\\w+?)(" + Joiner.on("|")
-        .join(SearchOperation.SIMPLE_OPERATION_SET) + ")(\\p{Punct}?)(\\w+?)(\\p{Punct}?)$");
+    private static Pattern SpecCriteraRegex = Pattern.compile("(\\w+?)(:|<|>)([\\w/-]+),");
 
     private enum Operator {
         OR(1), AND(2);
@@ -56,9 +55,11 @@ public class CriteriaParser {
                 stack.pop();
             } else {
 
-                Matcher matcher = SpecCriteraRegex.matcher(token);
+                Matcher matcher = SpecCriteraRegex.matcher(token+",");
                 while (matcher.find()) {
-                    output.push(new SpecSearchCriteria(matcher.group(1), matcher.group(2), matcher.group(3), matcher.group(4), matcher.group(5)));
+                    if (matcher.groupCount() == 3) {
+                        output.push(new SpecSearchCriteria(matcher.group(1), matcher.group(2), null, matcher.group(3), null));
+                    }
                 }
             }
         });

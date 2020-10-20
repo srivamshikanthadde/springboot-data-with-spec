@@ -16,8 +16,8 @@ public final class UserSpecificationsBuilder {
 
     // API
 
-    public final UserSpecificationsBuilder with(final String key, final String operation, final Object value, final String prefix, final String suffix) {
-        return with(null, key, operation, value, prefix, suffix);
+    public final UserSpecificationsBuilder with(final String prefix,final String key, final String operation, final Object value,  final String suffix) {
+        return with(prefix, key, operation, value, prefix, suffix);
     }
 
     public final UserSpecificationsBuilder with(final String orPredicate, final String key, final String operation, final Object value, final String prefix, final String suffix) {
