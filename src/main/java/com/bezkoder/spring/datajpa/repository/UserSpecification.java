@@ -48,6 +48,10 @@ public class UserSpecification implements Specification<User> {
 			return builder.like(root.get(criteria.getKey()), "%" + criteria.getValue());
 		case CONTAINS:
 			return builder.like(root.get(criteria.getKey()), "%" + criteria.getValue() + "%");
+		case BETWEEN:
+			String dateArray[] = criteria.getValue().toString().split("/");
+			return builder.between(root.get(criteria.getKey()),
+					dateArray[0],dateArray[1]);
 		default:
 			return null;
 		}
@@ -64,17 +68,13 @@ public class UserSpecification implements Specification<User> {
 			case LESS_THAN:
 				return builder.lessThan(root.get(criteria.getKey()), Timestamp.valueOf(criteria.getValue().toString()+TS));
 			case BETWEEN:
-				String[] dateArray = root.get(criteria.getValue().toString().split("/"));
+				String dateArray[] = criteria.getValue().toString().split("/");
 				return builder.between(root.get(criteria.getKey()),
 						Timestamp.valueOf(dateArray[0]+TS),Timestamp.valueOf(dateArray[1]+TS));
 			default:
 				return null;
 		}
 	}
-	private Predicate toPredicateDateInBetween(final Root<User> root, final CriteriaQuery<?> query, final CriteriaBuilder builder){
-		String[] dateArray = root.get(criteria.getKey().split("/");
-		return builder.between(root.get(criteria.getKey()),
-				Timestamp.valueOf(dateArray[0]+TS),Timestamp.valueOf(dateArray[1]+TS));
-	}
+
 
 }

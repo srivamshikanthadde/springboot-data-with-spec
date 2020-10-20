@@ -1,9 +1,6 @@
 package com.bezkoder.spring.datajpa.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -13,18 +10,26 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
- 
+
+    @Column(name = "FIRST_NAME")
     private String firstName;
 
+    @Column(name="LAST_NAME")
     private String lastName;
 
+    @Column(name="EMAIL")
     private String email;
 
+    @Column(name="AGE")
     private int age;
 
+    @Column(name="CREATED_DATE")
     private Timestamp createdDate;
 
+    @Column(name="UPDATED_DATE")
     private Timestamp updatedDate;
+
+
 
 
     public Long getId() {

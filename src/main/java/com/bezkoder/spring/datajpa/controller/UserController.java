@@ -5,12 +5,17 @@ import com.bezkoder.spring.datajpa.model.User;
 import com.bezkoder.spring.datajpa.repository.*;
 import com.google.common.base.Joiner;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -55,9 +60,14 @@ public class UserController {
 
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/users/spec")
+    @RequestMapping(method = RequestMethod.GET, value = "/users/spec/page")
     @ResponseBody
-    public List<User> findAllBySpecification(@RequestParam(value = "search") String search) {
+    public Page<User> findAllBySpecificationWithPage(@RequestParam(value = "search") String search,
+                                             @RequestParam(value = "page",defaultValue = "0") int page,
+                                             @RequestParam(value = "size",defaultValue = "5") int size,
+                                             @RequestParam(value = "sortby",defaultValue = "firstName") String sortby,
+                                             @RequestParam(value = "sortdir",defaultValue = "ASC") String sortdir
+                                             ) {
         UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
         String operationSetExper = Joiner.on("|")
             .join(SearchOperation.SIMPLE_OPERATION_SET);
@@ -66,7 +76,28 @@ public class UserController {
         while (matcher.find()) {
             builder.with(matcher.group(1), matcher.group(2), matcher.group(3), matcher.group(4), matcher.group(5));
         }
+        Pageable pg = PageRequest.of(page,size,Sort.by(Sort.Direction.fromString(sortdir), sortby));
+        Specification<User> spec = builder.build();
+        return dao.findAll(spec,pg);
+    }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/users/spec")
+    @ResponseBody
+    public List<User> findAllBySpecification(@RequestParam(value = "search") String search,
+                                             @RequestParam(value = "page",defaultValue = "1") int page,
+                                             @RequestParam(value = "size",defaultValue = "5") int size,
+                                             @RequestParam(value = "sortby",defaultValue = "firstName") String sortby,
+                                             @RequestParam(value = "sortdir",defaultValue = "ASC") String sortdir
+    ) {
+        UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
+        String operationSetExper = Joiner.on("|")
+                .join(SearchOperation.SIMPLE_OPERATION_SET);
+        Pattern pattern = Pattern.compile("(\\p{Punct}?)(\\w+?)(" + operationSetExper + ")([\\w/-]+)(\\p{Punct}?),");
+        Matcher matcher = pattern.matcher(search + ",");
+        while (matcher.find()) {
+            builder.with(matcher.group(1), matcher.group(2), matcher.group(3), matcher.group(4), matcher.group(5));
+        }
+        //Pageable pg = PageRequest.of(page,size,Sort.by(Sort.Direction.fromString(sortdir), sortby));
         Specification<User> spec = builder.build();
         return dao.findAll(spec);
     }
