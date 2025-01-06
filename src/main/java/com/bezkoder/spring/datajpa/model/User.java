@@ -30,6 +30,9 @@ public class User {
     private Timestamp updatedDate;
 
 
+    @Column(name="DELETED_DATE")
+    private Timestamp deletedDate;
+
 
 
     public Long getId() {
